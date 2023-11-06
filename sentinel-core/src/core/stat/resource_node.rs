@@ -51,6 +51,10 @@ impl ResourceNode {
         self.metric.clone()
     }
 
+    pub fn res_name(&self) -> String {
+        self.res_name.clone()
+    }
+
     pub fn max_avg(&self, event: MetricEvent) -> f64 {
         self.metric.max_of_single_bucket(event) as f64 * self.sample_count as f64
             / self.interval_ms as f64
