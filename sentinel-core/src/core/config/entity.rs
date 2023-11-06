@@ -6,6 +6,7 @@ use crate::{
 use serde::{Deserialize, Serialize};
 use serde_json;
 use std::fmt;
+use crate::config::get_default_log_dir;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AppConfig {
@@ -38,7 +39,7 @@ impl Default for LogMetricConfig {
     fn default() -> Self {
         LogMetricConfig {
             use_pid: true,
-            dir: LOG_METRICS_DIR.into(),
+            dir: get_default_log_dir(),
             single_file_max_size: SINGLE_FILE_MAX_SIZE,
             max_file_count: MAX_FILE_AMOUNT,
             flush_interval_sec: FLUSH_INTERVAL_SEC,
